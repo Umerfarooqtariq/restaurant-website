@@ -1,0 +1,96 @@
+---
+import "@fontsource/cormorant-garamond/latin-500.css";
+import "@fontsource/cormorant-garamond/latin-600.css";
+import "@fontsource/cormorant-garamond/latin-500-italic.css";
+import "@fontsource/outfit/latin-300.css";
+import "@fontsource/outfit/latin-400.css";
+import "@fontsource/outfit/latin-500.css";
+import "@fontsource/outfit/latin-600.css";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { menuHasDemo, restaurant, settings } from "../lib/content";
+import { metaDescription, resolvePublicSite, restaurantJsonLd, safeJsonLd } from "../lib/seo";
+import { telHref, whatsAppDigits, whatsAppHref } from "../../shared/display";
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  extraJsonLd?: Record<string, unknown> | null;
+}
+
+const { title, description = metaDescription(), image, extraJsonLd = null } = Astro.props;
+const site = resolvePublicSite(Astro.site);
+const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
+const home = Astro.url.pathname === "/";
+const phone = telHref(restaurant.phone);
+const digits = whatsAppDigits(restaurant.whatsapp);
+const whatsapp = whatsAppHref(restaurant.whatsapp, settings.whatsappOrderMessage);
+const ogImage = image && site ? new URL(image, site).href : image?.startsWith("https://") ? image : undefined;
+const jsonLd = restaurantJsonLd(site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#110d0b" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={restaurant.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_PK" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <script type="application/ld+json" set:html={safeJsonLd(jsonLd)} />
+    {extraJsonLd && <script type="application/ld+json" set:html={safeJsonLd(extraJsonLd)} />}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Header />
+    <main id="main" class={home ? "home-main" : "page-main"}>
+      {settings.status === "closed" && <div class="wrap"><p class="closed-banner" role="status">Khan Baba is currently closed.</p></div>}
+      {menuHasDemo() && !home && <div class="wrap"><p class="sample-banner" role="note">Sample dishes are shown for layout preview. They are not the Khan Baba menu.</p></div>}
+      <slot />
+    </main>
+    <Footer />
+    <div class="order-bar">
+      {phone ? <a class="btn btn-gold" href={phone}>Call</a> : <button class="btn btn-gold" type="button" disabled>Call</button>}
+      {whatsapp ? <a class="btn btn-ghost" href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a> : <button class="btn btn-ghost" type="button" disabled>WhatsApp</button>}
+    </div>
+    <button class="order-fab btn btn-gold" type="button" data-order>Order Now</button>
+    <dialog
+      id="order-dialog"
+      class="order-dialog"
+      aria-labelledby="order-dialog-title"
+      data-phone-href={phone || ""}
+      data-wa-digits={digits || ""}
+      data-general={settings.whatsappOrderMessage}
+      data-template={settings.whatsappItemMessage}
+    >
+      <button class="icon-btn" type="button" data-order-close>Close</button>
+      <p class="eyebrow">Order</p>
+      <h2 id="order-dialog-title">How would you like to order?</h2>
+      <p data-order-summary>Place an order</p>
+      <div class="order-actions">
+        <a class="btn btn-gold" data-order-call href={phone || "#"}>Call to Order</a>
+        <a class="btn btn-ghost" data-order-wa href="#" target="_blank" rel="noopener noreferrer">WhatsApp Order</a>
+      </div>
+      <p data-order-missing hidden>Phone and WhatsApp numbers have not been added yet.</p>
+    </dialog>
+    <script>
+      import { initChrome } from "../scripts/chrome";
+      initChrome();
+    </script>
+  </body>
+</html>

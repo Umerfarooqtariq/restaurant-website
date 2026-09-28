@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import { featuredDishes, menu, menuHasDemo, placeLabel, restaurant, settings, visibleHours } from "../lib/content";
+import { formatAmount, publicUrl, telHref, whatsAppHref } from "../../shared/display";
+import { isPlaceholder } from "../../shared/text";
+import { metaDescription } from "../lib/seo";
+
+const featured = featuredDishes();
+const hours = visibleHours();
+const place = placeLabel();
+const phone = telHref(restaurant.phone);
+const whatsapp = whatsAppHref(restaurant.whatsapp, settings.whatsappOrderMessage);
+const maps = publicUrl(restaurant.googleMapsUrl);
+const address = !isPlaceholder(restaurant.address) ? restaurant.address : "";
+---
+
+<BaseLayout title={settings.seoTitle} description={metaDescription()} image={restaurant.heroImage || undefined}>
+  <Hero />
+  {menuHasDemo() && (
+    <div class="wrap">
+      <p class="sample-banner" role="note">Sample dishes are shown for layout preview. They are not the Khan Baba menu.</p>
+    </div>
+  )}
+  {menu.categories.length > 0 && (
+    <section class="section reveal" aria-labelledby="categories-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">The kitchen</p>
+          <h2 id="categories-title">Categories</h2>
+        </header>
+        <div class="category-grid">
+          {menu.categories.map((category) => (
+            <a class="category-card" href={`/menu?category=${category.id}`}>
+              <div class="category-media">
+                {category.image ? <img src={category.image} alt="" loading="lazy" /> : <div class="media-fallback" aria-hidden="true">{category.name.slice(0, 1)}</div>}
+              </div>
+              <div class="category-copy">
+                <h3>{category.name}</h3>
+                {category.description && <p>{category.description}</p>}
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+  {featured.length > 0 && (
+    <section class="section reveal" aria-labelledby="featured-title">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="eyebrow">Featured</p>
+          <h2 id="featured-title">Popular dishes</h2>
+        </header>
+        <div class="dish-grid">
+          {featured.map(({ category, item }) => (
+            <article class:list={["dish-card", { "is-unavailable": !item.available }]}>
+              <a class="dish-open" href={`/menu?category=${category.id}#${item.id}`}>
+                <div class="dish-media">
+                  {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div class="media-fallback" aria-hidden="true">{item.name.slice(0, 1)}</div>}
+                  {item.featured && <span class="badge">Featured</span>}
+                  {item.demo && <span class="badge">Sample</span>}
+                </div>
+                <div class="dish-body">
+                  <p class="eyebrow">{category.name}</p>
+                  <h3>{item.name}</h3>
+                  {item.description && <p>{item.description}</p>}
+                  <ul class="price-list">
+                    {item.prices.map((price) => <li><span>{price.label}</span><span>{formatAmount(price.amount, settings.currencySymbol)}</span></li>)}
+                  </ul>
+                </div>
+              </a>
+              {item.available ? (
+                <button class="btn btn-line" type="button" data-order data-item={item.name}>Order Now</button>
+              ) : <p class="unavailable">Unavailable</p>}
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+  <section class="section reveal" aria-labelledby="visit-title">
+    <div class="wrap visit-grid">
+      <article class="panel">
+        <p class="eyebrow">Visit</p>
+        <h2 id="visit-title">{restaurant.name}</h2>
+        <p>{address || "Street address coming soon"}{place ? `, ${place}` : ""}</p>
+        <div class="stack">
+          {phone ? <a class="btn btn-gold" href={phone}>Call</a> : <button class="btn btn-gold" type="button" disabled>Call</button>}
+          {whatsapp ? <a class="btn btn-ghost" href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a> : <button class="btn btn-ghost" type="button" disabled>WhatsApp</button>}
+          {maps ? <a class="btn btn-ghost" href={maps} target="_blank" rel="noopener noreferrer">Get Directions</a> : <button class="btn btn-ghost" type="button" disabled>Directions</button>}
+        </div>
+      </article>
+      <article class="panel">
+        <h3>Opening hours</h3>
+        {hours.length > 0 ? (
+          <ul class="hours-list">
+            {hours.map((entry) => <li><span>{entry.label}</span><span>{entry.hours || "Hours to be added"}</span></li>)}
+          </ul>
+        ) : <p>Opening hours coming soon.</p>}
+      </article>
+      <article class="panel">
+        <h3>Order</h3>
+        <p>Call or send a WhatsApp message. There is no online cart or payment on this site.</p>
+        <div class="stack">
+          <button class="btn btn-gold" type="button" data-order>Order Now</button>
+          <a class="btn btn-ghost" href="/menu">View Menu</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

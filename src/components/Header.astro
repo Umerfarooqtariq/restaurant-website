@@ -1,0 +1,47 @@
+---
+import { placeLabel, restaurant } from "../lib/content";
+const path = Astro.url.pathname;
+const links = [
+  ["/", "Home"],
+  ["/menu", "Menu"],
+  ["/about", "About"],
+  ["/gallery", "Gallery"],
+  ["/contact", "Contact"],
+];
+const current = (href: string) => (href === "/" ? path === "/" : path === href);
+const place = placeLabel();
+---
+
+<header class="site-header" data-header>
+  <div class="nav-bar">
+    <a class="brand" href="/">
+      {restaurant.logo ? (
+        <img class="brand-logo" src={restaurant.logo} alt="" height="68" />
+      ) : (
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M10 54 V28 C10 12 54 12 54 28 V54" fill="none" stroke="currentColor" stroke-width="2"></path>
+          <path d="M32 22 L38 32 L32 42 L26 32 Z" fill="currentColor"></path>
+        </svg>
+      )}
+      <span>
+        <strong>{restaurant.name}</strong>
+        {place && <small>{place}</small>}
+      </span>
+    </a>
+    <nav class="nav-desktop" aria-label="Primary">
+      {links.map(([href, label]) => (
+        <a href={href} aria-current={current(href) ? "page" : undefined}>{label}</a>
+      ))}
+    </nav>
+    <button class="btn btn-gold nav-order" type="button" data-order>Order Now</button>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="nav-mobile" data-nav-panel aria-label="Mobile">
+    {links.map(([href, label]) => (
+      <a href={href} aria-current={current(href) ? "page" : undefined}>{label}</a>
+    ))}
+    <button class="btn btn-gold" type="button" data-order>Order Now</button>
+  </nav>
+</header>

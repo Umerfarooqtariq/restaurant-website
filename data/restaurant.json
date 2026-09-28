@@ -1,0 +1,40 @@
+{
+  "name": "Khan Baba",
+  "tagline": "Restaurant & Catering Services",
+  "description": "A restaurant in Rawalpindi, Pakistan.",
+  "address": "ADDRESS_HERE",
+  "city": "Rawalpindi",
+  "country": "Pakistan",
+  "phone": "PHONE_NUMBER_HERE",
+  "whatsapp": "WHATSAPP_NUMBER_HERE",
+  "googleMapsUrl": "GOOGLE_MAPS_URL_HERE",
+  "mapEmbedUrl": "",
+  "logo": "/images/logo/khan-baba.jpg",
+  "heroImage": "/images/hero/khan-baba.jpg",
+  "openingHours": [
+    {
+      "id": "hours-week",
+      "label": "Monday, Wednesday to Sunday",
+      "hours": "12:00 am - 4:00 am, 9:00 am - 11:59 pm"
+    },
+    {
+      "id": "hours-tue",
+      "label": "Tuesday",
+      "hours": "12:00 am - 4:00 am, 9:00 am - 11:45 pm"
+    }
+  ],
+  "socialLinks": {
+    "facebook": "",
+    "instagram": "",
+    "tiktok": ""
+  },
+  "about": {
+    "story": "",
+    "introduction": "Khan Baba is a restaurant and catering service, established in 1996.",
+    "cuisine": "",
+    "specialties": "",
+    "philosophy": "",
+    "ambience": "",
+    "experience": ""
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "images": [
+    {
+      "id": "g-kbr-sign",
+      "url": "/images/gallery/kbr-sign.jpg",
+      "alt": "Khan Baba Restaurant sign with a crown and the letters KBR",
+      "title": "Khan Baba",
+      "category": "restaurant"
+    },
+    {
+      "id": "g-karahi",
+      "url": "/images/gallery/karahi.jpg",
+      "alt": "Chicken karahi in a metal pan with ginger and herbs",
+      "title": "Karahi",
+      "category": "food"
+    },
+    {
+      "id": "g-pulao",
+      "url": "/images/gallery/pulao.jpg",
+      "alt": "Chicken pulao on a brass plate",
+      "title": "Pulao",
+      "category": "food"
+    },
+    {
+      "id": "g-naan-curry",
+      "url": "/images/gallery/naan-curry.jpg",
+      "alt": "Naan with sesame seeds served with a meat curry",
+      "title": "Naan and curry",
+      "category": "food"
+    },
+    {
+      "id": "g-bbq-skewers",
+      "url": "/images/gallery/bbq-skewers.jpg",
+      "alt": "Barbecue skewers with meat, onion, and tomato over charcoal",
+      "title": "Barbecue",
+      "category": "food"
+    }
+  ]
+}

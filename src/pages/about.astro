@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { gallery, placeLabel, restaurant } from "../lib/content";
+import { isPlaceholder } from "../../shared/text";
+
+const sections = [
+  ["introduction", "Introduction", "The house"],
+  ["story", "Story", restaurant.name],
+  ["cuisine", "Cuisine", "The food"],
+  ["specialties", "Specialties", "From the kitchen"],
+  ["philosophy", "Philosophy", "How we cook"],
+  ["ambience", "Ambience", "The room"],
+  ["experience", "Experience", "A visit"],
+] as const;
+
+const filled = sections.filter(([key]) => {
+  const value = restaurant.about[key];
+  return Boolean(value && !isPlaceholder(value));
+});
+const photos = gallery.images;
+const place = placeLabel();
+---
+
+<BaseLayout title={`About | ${restaurant.name}`} description={place ? `${restaurant.name} in ${place}.` : `About ${restaurant.name}.`}>
+  <div class="wrap">
+    <header class="page-hero">
+      <p class="eyebrow">{place || restaurant.name}</p>
+      <h1>About {restaurant.name}</h1>
+    </header>
+    {filled.length === 0 ? (
+      <p class="empty-state">The restaurant's story will be added here.</p>
+    ) : filled.map(([key, title, kicker], index) => {
+      const photo = photos[index];
+      return (
+        <article class:list={["about-block", "reveal", { "is-flip": index % 2 === 1 }]}>
+          <div class="about-visual">
+            {photo ? <img src={photo.url} alt={photo.alt} loading="lazy" /> : null}
+          </div>
+          <div class="about-copy">
+            <p class="eyebrow">{kicker}</p>
+            <h2>{title}</h2>
+            <p class="lede">{restaurant.about[key]}</p>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</BaseLayout>

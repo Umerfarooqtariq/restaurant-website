@@ -1,0 +1,57 @@
+---
+import { placeLabel, restaurant, visibleHours } from "../lib/content";
+import { isRealPhone, isPlaceholder } from "../../shared/text";
+import { publicUrl, telHref, whatsAppHref } from "../../shared/display";
+import { settings } from "../lib/content";
+
+const year = new Date().getFullYear();
+const place = placeLabel();
+const phone = telHref(restaurant.phone);
+const whatsapp = whatsAppHref(restaurant.whatsapp, settings.whatsappOrderMessage);
+const address = !isPlaceholder(restaurant.address) ? restaurant.address : "";
+const hours = visibleHours();
+const socials = [
+  ["Facebook", publicUrl(restaurant.socialLinks.facebook)],
+  ["Instagram", publicUrl(restaurant.socialLinks.instagram)],
+  ["TikTok", publicUrl(restaurant.socialLinks.tiktok)],
+].filter((entry): entry is [string, string] => Boolean(entry[1]));
+const description = restaurant.description.trim() || (place ? `A restaurant in ${place}.` : restaurant.name);
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>{restaurant.name}</h2>
+      <p class="lede">{description}</p>
+      {socials.length > 0 && (
+        <div class="socials">
+          {socials.map(([label, href]) => (
+            <a href={href} target="_blank" rel="noopener noreferrer">{label.slice(0, 1)}</a>
+          ))}
+        </div>
+      )}
+    </div>
+    <div>
+      <h3>Quick links</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/menu">Menu</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul>
+        <li>{phone ? <a href={phone}>{restaurant.phone}</a> : "Phone number coming soon"}</li>
+        <li>{isRealPhone(restaurant.whatsapp) && whatsapp ? <a href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a> : "WhatsApp coming soon"}</li>
+        <li>{address || "Street address coming soon"}{place ? `, ${place}` : ""}</li>
+        {hours.length > 0 ? hours.map((entry) => <li>{entry.label}{entry.hours ? ` · ${entry.hours}` : ""}</li>) : <li>Opening hours coming soon</li>}
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="legal">© {year} {restaurant.name}. All rights reserved.</p>
+  </div>
+</footer>

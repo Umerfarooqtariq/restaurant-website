@@ -1,0 +1,216 @@
+{
+  "categories": [
+    {
+      "id": "breakfast",
+      "name": "Breakfast",
+      "description": "",
+      "image": "/images/menu/paratha.jpg",
+      "items": [
+        {
+          "id": "paratha",
+          "name": "Paratha",
+          "description": "A flaky, golden flatbread & often served with breakfast",
+          "image": "/images/menu/paratha.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 80
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "anda",
+          "name": "Anda",
+          "description": "Freshly prepared egg & cooked to your liking",
+          "image": "/images/menu/anda.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 70
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "murgh-chanay",
+          "name": "Murgh Chanay",
+          "description": "A hearty breakfast dish featuring tender chicken & spiced chickpeas",
+          "image": "/images/menu/murgh-chanay.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 350
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "lassi",
+          "name": "Lassi",
+          "description": "A traditional, refreshing yogurt based drink & served chilled",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 200
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "khan-baba-special-mains",
+      "name": "Khan Baba Special Mains",
+      "description": "",
+      "image": "/images/menu/shahi-daal.jpg",
+      "items": [
+        {
+          "id": "shahi-daal",
+          "name": "Shahi Daal",
+          "description": "Rich, creamy lentils & a regal dish from our khan baba special selection",
+          "image": "/images/menu/shahi-daal.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 390
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "shahi-chanay",
+          "name": "Shahi Chanay",
+          "description": "A rich, flavorful chickpea curry & prepared with special spices",
+          "image": "/images/menu/shahi-chanay.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 350
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "khan-baba-special-thali",
+          "name": "Khan Baba Special Thali",
+          "description": "Pakistani style platter featuring tender meat and rice with rich and aromatic flavors.",
+          "image": "/images/menu/khan-baba-special-thali.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 299
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "chicken-pulao-platter",
+          "name": "Chicken Pulao Platter",
+          "description": "Pakistani style steamed chicken and rice with a comforting savory flavor.",
+          "image": "/images/menu/chicken-pulao-platter.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 399
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "chicken-korma",
+          "name": "Chicken Korma",
+          "description": "Tender chicken pieces cooked in a rich and creamy sauce with aromatic spices yogurt and coconut A Khan Baba specialty that melts in your mouth with every bite",
+          "image": "/images/menu/chicken-korma.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 390
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "special-pulao",
+      "name": "Special Pulao",
+      "description": "",
+      "image": "/images/menu/murgh-pulao.jpg",
+      "items": [
+        {
+          "id": "murgh-pulao",
+          "name": "Murgh Pulao",
+          "description": "A fragrant rice dish cooked with tender chicken pieces & aromatic spices",
+          "image": "/images/menu/murgh-pulao.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 340
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "sada-pulao",
+          "name": "Sada Pulao",
+          "description": "A simple yet aromatic rice dish & lightly spiced for a subtle flavor",
+          "image": "/images/menu/sada-pulao.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 210
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "breads-and-rotis",
+      "name": "Breads and Rotis",
+      "description": "",
+      "image": "/images/menu/patthar-roti.jpg",
+      "items": [
+        {
+          "id": "patthar-roti",
+          "name": "Patthar Roti",
+          "description": "Soft and fluffy Pateer roti made fresh daily with whole wheat flour and ghee. Perfectly layered and cooked on a traditional tawa until golden brown with a delightful aroma.",
+          "image": "/images/menu/patthar-roti.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 30
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    }
+  ]
+}

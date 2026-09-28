@@ -1,0 +1,13 @@
+node_modules
+dist
+.netlify
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+.astro
+
+# Printed menu cards include a phone number and street address.
+public/images/gallery/bbq-menu.jpg
+public/images/gallery/rice-menu.jpg

@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { placeLabel, restaurant, settings, visibleHours } from "../lib/content";
+import { isGoogleEmbed, isPlaceholder, isRealPhone } from "../../shared/text";
+import { publicUrl, telHref, whatsAppHref } from "../../shared/display";
+
+const place = placeLabel();
+const phone = telHref(restaurant.phone);
+const whatsapp = whatsAppHref(restaurant.whatsapp, settings.whatsappOrderMessage);
+const maps = publicUrl(restaurant.googleMapsUrl);
+const address = !isPlaceholder(restaurant.address) ? restaurant.address : "";
+const hours = visibleHours();
+const embed = restaurant.mapEmbedUrl && isGoogleEmbed(restaurant.mapEmbedUrl) ? restaurant.mapEmbedUrl : "";
+const socials = [
+  ["Facebook", publicUrl(restaurant.socialLinks.facebook)],
+  ["Instagram", publicUrl(restaurant.socialLinks.instagram)],
+  ["TikTok", publicUrl(restaurant.socialLinks.tiktok)],
+].filter((entry): entry is [string, string] => Boolean(entry[1]));
+---
+
+<BaseLayout title={`Contact | ${restaurant.name}`} description={place ? `Contact ${restaurant.name} in ${place}.` : `Contact ${restaurant.name}.`}>
+  <div class="wrap">
+    <header class="page-hero">
+      <p class="eyebrow">Visit or order</p>
+      <h1>Contact</h1>
+    </header>
+    <div class="contact-grid">
+      <article class="panel">
+        <h2>{restaurant.name}</h2>
+        <p>{address || "Street address coming soon"}</p>
+        {place && <p>{place}</p>}
+        <ul class="hours-list">
+          <li><span>Phone</span><span>{isRealPhone(restaurant.phone) ? restaurant.phone : "Coming soon"}</span></li>
+          <li><span>WhatsApp</span><span>{isRealPhone(restaurant.whatsapp) ? restaurant.whatsapp : "Coming soon"}</span></li>
+        </ul>
+        <div class="stack">
+          {phone ? <a class="btn btn-gold" href={phone}>Call</a> : <button class="btn btn-gold" type="button" disabled>Call</button>}
+          {whatsapp ? <a class="btn btn-ghost" href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a> : <button class="btn btn-ghost" type="button" disabled>WhatsApp</button>}
+          {maps ? <a class="btn btn-ghost" href={maps} target="_blank" rel="noopener noreferrer">Get Directions</a> : <button class="btn btn-ghost" type="button" disabled>Directions</button>}
+        </div>
+        {socials.length > 0 && (
+          <div class="socials">
+            {socials.map(([label, href]) => <a href={href} target="_blank" rel="noopener noreferrer">{label}</a>)}
+          </div>
+        )}
+      </article>
+      <article class="panel">
+        <h2>Opening hours</h2>
+        {hours.length > 0 ? (
+          <ul class="hours-list">
+            {hours.map((entry) => <li><span>{entry.label}</span><span>{entry.hours || "Hours to be added"}</span></li>)}
+          </ul>
+        ) : <p>Opening hours coming soon.</p>}
+      </article>
+      <div>
+        {embed ? (
+          <div class="map-frame">
+            <iframe title={`Map of ${restaurant.name}`} src={embed} loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        ) : (
+          <div class="map-pending">A map will appear here when a Google Maps embed link is added.</div>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

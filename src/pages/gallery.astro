@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GalleryView from "../components/GalleryView";
+import { gallery, restaurant } from "../lib/content";
+---
+
+<BaseLayout title={`Gallery | ${restaurant.name}`} description={`Photographs from ${restaurant.name}.`}>
+  <div class="wrap">
+    <header class="page-hero">
+      <p class="eyebrow">{restaurant.name}</p>
+      <h1>Gallery</h1>
+      <p class="lede">Menu cards and dishes from Khan Baba.</p>
+    </header>
+    {gallery.images.length === 0 ? (
+      <p class="empty-state">Photographs of Khan Baba will appear here.</p>
+    ) : (
+      <GalleryView client:load images={gallery.images} />
+    )}
+  </div>
+</BaseLayout>

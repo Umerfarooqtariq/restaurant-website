@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MenuBrowser from "../components/MenuBrowser";
+import { menu, placeLabel, restaurant, settings } from "../lib/content";
+import { menuJsonLd } from "../lib/seo";
+
+const place = placeLabel();
+const description = place ? `Menu at ${restaurant.name} in ${place}.` : `Menu at ${restaurant.name}.`;
+const initialCategory = Astro.url.searchParams.get("category") ?? "all";
+---
+
+<BaseLayout title={`Menu | ${restaurant.name}`} description={description} extraJsonLd={menuJsonLd()}>
+  <div class="wrap">
+    <header class="page-hero">
+      <p class="eyebrow">{restaurant.name}</p>
+      <h1>Menu</h1>
+      <p class="lede">Choose a dish, then call or WhatsApp to order.</p>
+    </header>
+    {menu.categories.length === 0 ? (
+      <p class="empty-state">The menu will appear here.</p>
+    ) : (
+      <MenuBrowser client:load categories={menu.categories} currencySymbol={settings.currencySymbol} initialCategory={initialCategory} />
+    )}
+  </div>
+</BaseLayout>
