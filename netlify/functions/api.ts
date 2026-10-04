@@ -212,6 +212,7 @@ function assertPermutation(current: string[], next: string[]) {
 
 function imageInUse(publicPath: string, restaurant: Restaurant, menu: Menu, gallery: Gallery) {
   if (restaurant.logo === publicPath || restaurant.heroImage === publicPath) return true;
+  if (restaurant.banners.some((banner) => banner.image === publicPath)) return true;
   for (const category of menu.categories) {
     if (category.image === publicPath) return true;
     if (category.items.some((item) => item.image === publicPath)) return true;

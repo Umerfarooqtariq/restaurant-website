@@ -57,7 +57,12 @@ const address = !isPlaceholder(restaurant.address) ? restaurant.address : "";
             <article class:list={["dish-card", { "is-unavailable": !item.available }]}>
               <a class="dish-open" href={`/menu?category=${category.id}#${item.id}`}>
                 <div class="dish-media">
-                  {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div class="media-fallback" aria-hidden="true">{item.name.slice(0, 1)}</div>}
+                  {item.image ? (
+                    <>
+                      <img class="dish-blur" src={item.image} alt="" aria-hidden="true" />
+                      <img class="dish-photo" src={item.image} alt="" loading="lazy" />
+                    </>
+                  ) : <div class="media-fallback" aria-hidden="true">{item.name.slice(0, 1)}</div>}
                   {item.featured && <span class="badge">Featured</span>}
                   {item.demo && <span class="badge">Sample</span>}
                 </div>

@@ -32,7 +32,7 @@ const links = [
   ["/contact", "Contact"],
   ["/menu", "Menu"],
   ["/gallery", "Gallery"],
-  ["/branding", "Logo & hero"],
+  ["/branding", "Logo & banner"],
   ["/settings", "Settings"],
 ];
 

@@ -56,6 +56,57 @@ function initReveal() {
   nodes.forEach((node) => observer.observe(node));
 }
 
+function initBanner() {
+  const root = document.querySelector<HTMLElement>("[data-banner]");
+  if (!root) return;
+  const slides = [...root.querySelectorAll<HTMLElement>("[data-banner-slide]")];
+  const dots = [...root.querySelectorAll<HTMLButtonElement>("[data-banner-dot]")];
+  if (slides.length < 2) return;
+  let index = 0;
+  let timer = 0;
+
+  const show = (next: number) => {
+    index = (next + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === index;
+      slide.classList.toggle("is-active", active);
+      if (active) slide.removeAttribute("aria-hidden");
+      else slide.setAttribute("aria-hidden", "true");
+    });
+    dots.forEach((dot, dotIndex) => {
+      const active = dotIndex === index;
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-current", active ? "true" : "false");
+    });
+  };
+
+  const start = () => {
+    window.clearInterval(timer);
+    if (reducedMotion()) return;
+    timer = window.setInterval(() => show(index + 1), 4000);
+  };
+
+  root.querySelector("[data-banner-prev]")?.addEventListener("click", () => {
+    show(index - 1);
+    start();
+  });
+  root.querySelector("[data-banner-next]")?.addEventListener("click", () => {
+    show(index + 1);
+    start();
+  });
+  dots.forEach((dot, dotIndex) => {
+    dot.addEventListener("click", () => {
+      show(dotIndex);
+      start();
+    });
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) window.clearInterval(timer);
+    else start();
+  });
+  start();
+}
+
 function initParallax() {
   const media = document.querySelector<HTMLElement>("[data-parallax]");
   if (!media || reducedMotion() || window.matchMedia("(pointer: coarse)").matches) return;
@@ -123,6 +174,7 @@ function initOrder() {
 export function initChrome() {
   initNav();
   initReveal();
+  initBanner();
   initParallax();
   initOrder();
 }

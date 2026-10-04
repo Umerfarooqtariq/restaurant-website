@@ -68,7 +68,12 @@ export default function MenuBrowser({ categories, currencySymbol, initialCategor
               <article key={item.id} id={item.id} className={item.available ? "dish-card" : "dish-card is-unavailable"}>
                 <button type="button" className="dish-open" onClick={() => setActiveId(item.id)}>
                   <div className="dish-media">
-                    {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div className="media-fallback" aria-hidden="true">{item.name.slice(0, 1)}</div>}
+                    {item.image ? (
+                      <>
+                        <img className="dish-blur" src={item.image} alt="" aria-hidden="true" />
+                        <img className="dish-photo" src={item.image} alt="" loading="lazy" />
+                      </>
+                    ) : <div className="media-fallback" aria-hidden="true">{item.name.slice(0, 1)}</div>}
                     {item.featured && <span className="badge">Featured</span>}
                     {item.demo && <span className="badge">Sample</span>}
                   </div>

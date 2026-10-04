@@ -2,12 +2,21 @@
 import { placeLabel, restaurant } from "../lib/content";
 const place = placeLabel();
 const intro = restaurant.description.trim() || (place ? `Restaurant in ${place}.` : "");
+const slides = restaurant.banners.length
+  ? restaurant.banners
+  : restaurant.heroImage
+    ? [{ id: "hero", image: restaurant.heroImage, alt: restaurant.name }]
+    : [];
 ---
 
 <section class="hero">
-  <div class="hero-media" data-parallax>
-    {restaurant.heroImage ? (
-      <img src={restaurant.heroImage} alt="" width="1600" height="2000" fetchpriority="high" />
+  <div class="hero-media" data-banner>
+    {slides.length ? (
+      slides.map((slide, index) => (
+        <div class:list={["banner-slide", { "is-active": index === 0 }]} data-banner-slide aria-hidden={index === 0 ? undefined : "true"}>
+          <img src={slide.image} alt={slide.alt || ""} width="1600" height="1000" fetchpriority={index === 0 ? "high" : "low"} />
+        </div>
+      ))
     ) : (
       <svg class="hero-art" viewBox="0 0 800 900" aria-hidden="true">
         <defs>
@@ -24,10 +33,24 @@ const intro = restaurant.description.trim() || (place ? `Restaurant in ${place}.
       </svg>
     )}
     <div class="hero-shade"></div>
+    {slides.length > 1 && (
+      <div class="banner-controls">
+        <button class="banner-arrow" type="button" data-banner-prev aria-label="Previous photo">‹</button>
+        <div class="banner-dots">
+          {slides.map((slide, index) => (
+            <button class:list={["banner-dot", { "is-active": index === 0 }]} type="button" data-banner-dot aria-label={`Show photo ${index + 1}`} aria-current={index === 0 ? "true" : "false"}></button>
+          ))}
+        </div>
+        <button class="banner-arrow" type="button" data-banner-next aria-label="Next photo">›</button>
+      </div>
+    )}
   </div>
   <div class="wrap hero-copy">
     {place && <p class="eyebrow">{place}</p>}
-    <h1>{restaurant.name}</h1>
+    <div class="hero-brand">
+      {restaurant.logo && <img class="hero-logo" src={restaurant.logo} alt="" width="96" height="120" />}
+      <h1>{restaurant.name}</h1>
+    </div>
     {restaurant.tagline && <p class="tagline">{restaurant.tagline}</p>}
     {intro && <p class="lede">{intro}</p>}
     <div class="hero-actions">

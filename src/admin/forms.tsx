@@ -209,24 +209,42 @@ export function BrandingForm() {
   const { content, canSave, refresh, notify } = useAdmin();
   const source = content.restaurant;
   const [logo, setLogo] = useState(source.logo);
-  const [heroImage, setHeroImage] = useState(source.heroImage);
+  const [banners, setBanners] = useState(source.banners);
   const { error, setError, saving, setSaving } = useServerError();
   useEffect(() => {
     setLogo(source.logo);
-    setHeroImage(source.heroImage);
+    setBanners(source.banners);
   }, [source]);
-  const dirty = logo !== source.logo || heroImage !== source.heroImage;
+  const dirty = logo !== source.logo || JSON.stringify(banners) !== JSON.stringify(source.banners);
   useWarn(dirty);
+
+  function move(index: number, direction: -1 | 1) {
+    const next = index + direction;
+    if (next < 0 || next >= banners.length) return;
+    const copy = [...banners];
+    const [item] = copy.splice(index, 1);
+    copy.splice(next, 0, item);
+    setBanners(copy);
+  }
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
     if (saving) return;
+    const ready = banners.filter((banner) => banner.image);
+    if (ready.length !== banners.length) {
+      setError("Add a photo for each banner, or remove the empty one.");
+      return;
+    }
     setSaving(true);
     setError("");
     try {
-      await api("/api/admin/restaurant", { method: "PUT", body: JSON.stringify({ ...source, logo, heroImage }) });
+      const heroImage = ready[0]?.image || source.heroImage;
+      await api("/api/admin/restaurant", { method: "PUT", body: JSON.stringify({ ...source, logo, heroImage, banners: ready }) });
       await releaseImage(source.logo, logo);
-      await releaseImage(source.heroImage, heroImage);
+      const kept = new Set([logo, heroImage, ...ready.map((banner) => banner.image)]);
+      for (const image of [source.heroImage, ...source.banners.map((banner) => banner.image)]) {
+        if (image && !kept.has(image)) await releaseImage(image, "");
+      }
       await refresh();
       notify("Saved.");
     } catch (err) {
@@ -240,12 +258,42 @@ export function BrandingForm() {
 
   return (
     <form onSubmit={onSubmit} aria-busy={saving}>
-      <ShellTop title="Logo and hero" />
+      <ShellTop title="Logo and banner" />
       <div className="card form-grid">
         <ImageField label="Restaurant logo" folder="logo" value={logo} disabled={!canSave} onChange={setLogo} />
-        <ImageField label="Hero image" folder="hero" value={heroImage} disabled={!canSave} onChange={setHeroImage} />
+        <div className="banner-editor">
+          <span>Banner photos</span>
+          <p className="hint">These photos slide across the top of the home page. Add up to 8.</p>
+          {banners.map((banner, index) => (
+            <div className="banner-row" key={banner.id}>
+              <ImageField
+                label={`Photo ${index + 1}`}
+                folder="hero"
+                value={banner.image}
+                disabled={!canSave}
+                onChange={(image) => setBanners(banners.map((entry) => entry.id === banner.id ? { ...entry, image } : entry))}
+              />
+              <label className="field">
+                <span>Description</span>
+                <input value={banner.alt} disabled={!canSave} onChange={(event) => setBanners(banners.map((entry) => entry.id === banner.id ? { ...entry, alt: event.target.value } : entry))} />
+              </label>
+              <div className="row-actions">
+                <button type="button" disabled={!canSave || index === 0} onClick={() => move(index, -1)}>Move up</button>
+                <button type="button" disabled={!canSave || index === banners.length - 1} onClick={() => move(index, 1)}>Move down</button>
+                <button type="button" disabled={!canSave} onClick={() => setBanners(banners.filter((entry) => entry.id !== banner.id))}>Remove</button>
+              </div>
+            </div>
+          ))}
+          <button
+            type="button"
+            disabled={!canSave || banners.length >= 8}
+            onClick={() => setBanners([...banners, { id: `b-${crypto.randomUUID().replace(/-/g, "").slice(0, 8)}`, image: "", alt: "" }])}
+          >
+            Add banner photo
+          </button>
+        </div>
         {error && <p className="form-error" role="alert">{error}</p>}
-        <SaveBar dirty={dirty} saving={saving} canSave={canSave} onCancel={() => { setLogo(source.logo); setHeroImage(source.heroImage); }} />
+        <SaveBar dirty={dirty} saving={saving} canSave={canSave} onCancel={() => { setLogo(source.logo); setBanners(source.banners); }} />
       </div>
     </form>
   );

@@ -53,6 +53,12 @@ export const hoursSchema = z.object({
   hours: optionalText(80, "Hours"),
 });
 
+export const bannerSchema = z.object({
+  id: slugId,
+  image: imageField.refine((value) => value.length > 0, "Choose a banner image."),
+  alt: optionalText(180, "Banner description"),
+});
+
 export const restaurantSchema = z.object({
   name: requiredText(80, "Restaurant name"),
   tagline: optionalText(160, "Tagline"),
@@ -73,6 +79,7 @@ export const restaurantSchema = z.object({
     ),
   logo: imageField,
   heroImage: imageField,
+  banners: z.array(bannerSchema).max(8, "Use at most 8 banner photos.").default([]),
   openingHours: z.array(hoursSchema).max(14, "Too many opening-hour rows."),
   socialLinks: z.object({
     facebook: urlField("Facebook"),

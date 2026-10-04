@@ -1,6 +1,132 @@
 {
   "categories": [
     {
+      "id": "bbq-platters",
+      "name": "BBQ Platters",
+      "description": "",
+      "image": "/images/menu/bbq-platters.png",
+      "items": [
+        {
+          "id": "two-person-platter",
+          "name": "2 Person Platter",
+          "description": "5 chicken boti, 3 malai boti, 3 seekh kabab, plain rice, salad, raita, and a 1 liter drink.",
+          "image": "/images/menu/bbq-platters.png",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 999
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "four-person-platter",
+          "name": "4 Person Platter",
+          "description": "5 chicken boti, 3 malai boti, 3 seekh kabab, half grilled chargha, yakhni pulao, salad, raita, and a 1.5 liter drink.",
+          "image": "/images/menu/bbq-platters.png",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 1999
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "family-platter",
+          "name": "Family Platter",
+          "description": "5 chicken boti, 3 malai boti, 3 seekh kabab, full grilled chargha, 3 plates of pulao, salad, raita, and a 1.5 liter drink.",
+          "image": "/images/menu/bbq-platters.png",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 3499
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "house-platters",
+      "name": "House Platters",
+      "description": "",
+      "image": "/images/menu/house-platters.png",
+      "items": [
+        {
+          "id": "nashta-platter",
+          "name": "Nashta Platter",
+          "description": "",
+          "image": "/images/menu/house-platters.png",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 249
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "khana-platter",
+          "name": "Khana Platter",
+          "description": "",
+          "image": "/images/menu/house-platters.png",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 299
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-pulao-platter",
+          "name": "Chicken Pulao Platter",
+          "description": "",
+          "image": "/images/menu/chicken-pulao-platter.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 349
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "bbq-platter",
+          "name": "BBQ Platter",
+          "description": "",
+          "image": "/images/gallery/bbq-skewers.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1299
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 650
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
       "id": "breakfast",
       "name": "Breakfast",
       "description": "",
@@ -9,13 +135,13 @@
         {
           "id": "paratha",
           "name": "Paratha",
-          "description": "A flaky, golden flatbread & often served with breakfast",
+          "description": "",
           "image": "/images/menu/paratha.jpg",
           "prices": [
             {
               "id": "price",
               "label": "Price",
-              "amount": 80
+              "amount": 60
             }
           ],
           "featured": false,
@@ -24,7 +150,22 @@
         {
           "id": "anda",
           "name": "Anda",
-          "description": "Freshly prepared egg & cooked to your liking",
+          "description": "",
+          "image": "/images/menu/anda.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 60
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "omelette",
+          "name": "Omelette",
+          "description": "",
           "image": "/images/menu/anda.jpg",
           "prices": [
             {
@@ -37,25 +178,10 @@
           "available": true
         },
         {
-          "id": "murgh-chanay",
-          "name": "Murgh Chanay",
-          "description": "A hearty breakfast dish featuring tender chicken & spiced chickpeas",
-          "image": "/images/menu/murgh-chanay.jpg",
-          "prices": [
-            {
-              "id": "price",
-              "label": "Price",
-              "amount": 350
-            }
-          ],
-          "featured": false,
-          "available": true
-        },
-        {
-          "id": "lassi",
-          "name": "Lassi",
-          "description": "A traditional, refreshing yogurt based drink & served chilled",
-          "image": "/images/menu/lassi.jpg",
+          "id": "fry-paneer",
+          "name": "Fry Paneer",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
           "prices": [
             {
               "id": "price",
@@ -65,35 +191,115 @@
           ],
           "featured": false,
           "available": true
-        }
-      ]
-    },
-    {
-      "id": "khan-baba-special-mains",
-      "name": "Khan Baba Special Mains",
-      "description": "",
-      "image": "/images/menu/shahi-daal.jpg",
-      "items": [
+        },
         {
-          "id": "shahi-daal",
-          "name": "Shahi Daal",
-          "description": "Rich, creamy lentils & a regal dish from our khan baba special selection",
-          "image": "/images/menu/shahi-daal.jpg",
+          "id": "murgh-paneer",
+          "name": "Murgh Paneer",
+          "description": "",
+          "image": "/images/menu/chicken-korma.jpg",
           "prices": [
             {
               "id": "price",
               "label": "Price",
-              "amount": 390
+              "amount": 300
             }
           ],
           "featured": false,
           "available": true
         },
         {
-          "id": "shahi-chanay",
-          "name": "Shahi Chanay",
-          "description": "A rich, flavorful chickpea curry & prepared with special spices",
-          "image": "/images/menu/shahi-chanay.jpg",
+          "id": "paneer",
+          "name": "Paneer",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 150
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "murgh-haleem",
+          "name": "Murgh Haleem",
+          "description": "",
+          "image": "/images/menu/haleem.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 180
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chai",
+          "name": "Chai",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 70
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "lassi",
+          "name": "Lassi",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 170
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 150
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "khan-baba-special",
+      "name": "Khan Baba Special",
+      "description": "",
+      "image": "/images/menu/khan-baba-special-thali.jpg",
+      "items": [
+        {
+          "id": "khan-baba-ki-sabzi",
+          "name": "Khan Baba ki Sabzi",
+          "description": "",
+          "image": "/images/menu/khan-baba-sabzi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 499
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "fry-chicken-qeema-karahi",
+          "name": "Fry Chicken Qeema Karahi",
+          "description": "",
+          "image": "/images/menu/qeema.jpg",
           "prices": [
             {
               "id": "price",
@@ -101,13 +307,88 @@
               "amount": 350
             }
           ],
-          "featured": true,
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "shahi-daal",
+          "name": "Shahi Daal",
+          "description": "",
+          "image": "/images/menu/shahi-daal.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 350
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "shahi-paneer",
+          "name": "Shahi Paneer",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 300
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "shahi-palak",
+          "name": "Shahi Palak",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 350
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "daal-makhani",
+          "name": "Daal Makhani",
+          "description": "",
+          "image": "/images/menu/daal-makhani.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 350
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "fry-daal-karahi",
+          "name": "Fry Daal Karahi",
+          "description": "",
+          "image": "/images/menu/shahi-daal.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 250
+            }
+          ],
+          "featured": false,
           "available": true
         },
         {
           "id": "khan-baba-special-thali",
           "name": "Khan Baba Special Thali",
-          "description": "Pakistani style platter featuring tender meat and rice with rich and aromatic flavors.",
+          "description": "",
           "image": "/images/menu/khan-baba-special-thali.jpg",
           "prices": [
             {
@@ -120,30 +401,15 @@
           "available": true
         },
         {
-          "id": "chicken-pulao-platter",
+          "id": "chicken-pulao-platter-special",
           "name": "Chicken Pulao Platter",
-          "description": "Pakistani style steamed chicken and rice with a comforting savory flavor.",
+          "description": "",
           "image": "/images/menu/chicken-pulao-platter.jpg",
           "prices": [
             {
               "id": "price",
               "label": "Price",
-              "amount": 399
-            }
-          ],
-          "featured": true,
-          "available": true
-        },
-        {
-          "id": "chicken-korma",
-          "name": "Chicken Korma",
-          "description": "Tender chicken pieces cooked in a rich and creamy sauce with aromatic spices yogurt and coconut A Khan Baba specialty that melts in your mouth with every bite",
-          "image": "/images/menu/chicken-korma.jpg",
-          "prices": [
-            {
-              "id": "price",
-              "label": "Price",
-              "amount": 390
+              "amount": 350
             }
           ],
           "featured": false,
@@ -160,28 +426,78 @@
         {
           "id": "murgh-pulao",
           "name": "Murgh Pulao",
-          "description": "A fragrant rice dish cooked with tender chicken pieces & aromatic spices",
+          "description": "",
           "image": "/images/menu/murgh-pulao.jpg",
           "prices": [
             {
-              "id": "price",
-              "label": "Price",
-              "amount": 340
+              "id": "full",
+              "label": "Full",
+              "amount": 320
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 300
             }
           ],
           "featured": true,
           "available": true
         },
         {
-          "id": "sada-pulao",
-          "name": "Sada Pulao",
-          "description": "A simple yet aromatic rice dish & lightly spiced for a subtle flavor",
+          "id": "chana-pulao",
+          "name": "Chana Pulao",
+          "description": "",
           "image": "/images/menu/sada-pulao.jpg",
           "prices": [
             {
-              "id": "price",
-              "label": "Price",
-              "amount": 210
+              "id": "full",
+              "label": "Full",
+              "amount": 250
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 230
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "sada-pulao",
+          "name": "Sada Pulao",
+          "description": "",
+          "image": "/images/menu/sada-pulao.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 220
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 200
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "single-pulao",
+          "name": "Single Pulao",
+          "description": "",
+          "image": "/images/menu/murgh-pulao.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 170
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 150
             }
           ],
           "featured": false,
@@ -190,21 +506,588 @@
       ]
     },
     {
-      "id": "breads-and-rotis",
-      "name": "Breads and Rotis",
+      "id": "curries",
+      "name": "Curries",
       "description": "",
-      "image": "/images/menu/patthar-roti.jpg",
+      "image": "/images/menu/chicken-korma.jpg",
       "items": [
         {
-          "id": "patthar-roti",
-          "name": "Patthar Roti",
-          "description": "Soft and fluffy Pateer roti made fresh daily with whole wheat flour and ghee. Perfectly layered and cooked on a traditional tawa until golden brown with a delightful aroma.",
-          "image": "/images/menu/patthar-roti.jpg",
+          "id": "daal-mash",
+          "name": "Daal Mash",
+          "description": "",
+          "image": "/images/menu/shahi-daal.jpg",
           "prices": [
             {
               "id": "price",
               "label": "Price",
-              "amount": 30
+              "amount": 180
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "curry-paneer",
+          "name": "Paneer",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 150
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "mix-sabzi",
+          "name": "Mix Sabzi",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 150
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "karahi-pakora",
+          "name": "Karahi Pakora",
+          "description": "",
+          "image": "/images/gallery/karahi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 150
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "haleem",
+          "name": "Haleem",
+          "description": "",
+          "image": "/images/menu/haleem.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 180
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-qeema",
+          "name": "Chicken Qeema",
+          "description": "",
+          "image": "/images/menu/qeema.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 320
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-korma",
+          "name": "Chicken Korma",
+          "description": "",
+          "image": "/images/menu/chicken-korma.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 300
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "daal-chana",
+          "name": "Daal Chana",
+          "description": "",
+          "image": "/images/menu/shahi-daal.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 180
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "barbecue",
+      "name": "Barbecue",
+      "description": "",
+      "image": "/images/gallery/bbq-skewers.jpg",
+      "items": [
+        {
+          "id": "chicken-boti",
+          "name": "Chicken Boti",
+          "description": "",
+          "image": "/images/gallery/bbq-skewers.jpg",
+          "prices": [
+            {
+              "id": "kg",
+              "label": "Per kg",
+              "amount": 2300
+            },
+            {
+              "id": "half",
+              "label": "Half kg",
+              "amount": 1000
+            },
+            {
+              "id": "piece",
+              "label": "Piece",
+              "amount": 200
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "boneless-malai-boti",
+          "name": "Boneless Malai Boti",
+          "description": "",
+          "image": "/images/menu/malai-boti.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 799
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 399
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-tikka",
+          "name": "Chicken Tikka",
+          "description": "",
+          "image": "/images/menu/chicken-tikka.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 380
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 350
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "grilled-chargha",
+          "name": "Grilled Chargha",
+          "description": "",
+          "image": "/images/menu/chargha.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 1399
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "seekh-kabab",
+          "name": "Seekh Kabab",
+          "description": "",
+          "image": "/images/menu/seekh-kabab.jpg",
+          "prices": [
+            {
+              "id": "kg",
+              "label": "Per kg",
+              "amount": 1500
+            },
+            {
+              "id": "half",
+              "label": "Half kg",
+              "amount": 650
+            },
+            {
+              "id": "piece",
+              "label": "Piece",
+              "amount": 130
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "karahi",
+      "name": "Karahi",
+      "description": "",
+      "image": "/images/gallery/karahi.jpg",
+      "items": [
+        {
+          "id": "chicken-karahi",
+          "name": "Chicken Karahi",
+          "description": "",
+          "image": "/images/menu/chicken-karahi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1700
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 900
+            }
+          ],
+          "featured": true,
+          "available": true
+        },
+        {
+          "id": "chicken-achari-karahi",
+          "name": "Chicken Achari Karahi",
+          "description": "",
+          "image": "/images/menu/chicken-karahi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1800
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 1000
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-white-karahi",
+          "name": "Chicken White Karahi",
+          "description": "",
+          "image": "/images/gallery/karahi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1900
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 1050
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-boti-karahi",
+          "name": "Chicken Boti Karahi",
+          "description": "",
+          "image": "/images/gallery/karahi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1700
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 1000
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "seekh-kabab-karahi",
+          "name": "Seekh Kabab Karahi",
+          "description": "",
+          "image": "/images/menu/seekh-kabab.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1500
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 800
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-handi-masala",
+          "name": "Chicken Handi Masala",
+          "description": "",
+          "image": "/images/menu/chicken-korma.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1750
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 1050
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-boneless-karahi",
+          "name": "Chicken Boneless Karahi",
+          "description": "",
+          "image": "/images/menu/chicken-karahi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 1900
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 1000
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chicken-boneless-white-karahi",
+          "name": "Chicken Boneless White Karahi",
+          "description": "",
+          "image": "/images/gallery/karahi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 2100
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 1100
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "description": "",
+      "image": "/images/menu/lassi.jpg",
+      "items": [
+        {
+          "id": "drink-chai",
+          "name": "Chai",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 70
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "doodh-pati",
+          "name": "Doodh Pati",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 100
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "coffee",
+          "name": "Coffee",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 70
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "mineral-water",
+          "name": "Mineral Water",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Large",
+              "amount": 100
+            },
+            {
+              "id": "half",
+              "label": "Regular",
+              "amount": 50
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "drink-lassi",
+          "name": "Lassi",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 170
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 150
+            }
+          ],
+          "featured": false,
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "extras",
+      "name": "Extras",
+      "description": "",
+      "image": "/images/gallery/naan-curry.jpg",
+      "items": [
+        {
+          "id": "salad",
+          "name": "Salad",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 40
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "raita",
+          "name": "Raita",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 40
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "special-salad",
+          "name": "Special Salad",
+          "description": "",
+          "image": "/images/gallery/naan-curry.jpg",
+          "prices": [
+            {
+              "id": "full",
+              "label": "Full",
+              "amount": 150
+            },
+            {
+              "id": "half",
+              "label": "Half",
+              "amount": 100
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "chutney",
+          "name": "Chutney",
+          "description": "",
+          "image": "/images/menu/lassi.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 50
+            }
+          ],
+          "featured": false,
+          "available": true
+        },
+        {
+          "id": "disposable-box",
+          "name": "Disposable Box",
+          "description": "",
+          "image": "/images/menu/khan-baba-special-thali.jpg",
+          "prices": [
+            {
+              "id": "price",
+              "label": "Price",
+              "amount": 50
             }
           ],
           "featured": false,
